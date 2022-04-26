@@ -48,7 +48,6 @@ if proposed_word:
 
         if rank == 0:
             st.write('**Congratulations !! You found the secret word !**')
-            st.write('It is', target_word)
     else:
         st.write('I dont know this word :( Please select another one')
 
