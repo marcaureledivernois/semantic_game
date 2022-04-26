@@ -52,6 +52,7 @@ if proposed_word:
     else:
         st.write('I dont know this word :( Please select another one')
 
-    st.write('History of proposed words. Top words are currently the closest to the secret word.')
+
+    st.write('History of proposed words: Top words are currently the closest to the secret word.')
     st.table(pd.DataFrame(store_inputs()).sort_values(by='Rank'))
 
