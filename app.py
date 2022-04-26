@@ -13,8 +13,9 @@ with open('embeddings_matrix.npy', 'rb') as f:
 
 st.title('Guess the secret word !')
 st.write('The goal of the game is to guess the secret word. To do so, '
-         'propose any word and see how close you are from the secret word. The lower the score you get, the closer '
-         'you are to the secret word. When you score low, it means your proposed word is either easily '
+         'propose any word and see how close you are from the secret word. '
+         '**The lower the score you get, the closer '
+         'you are to the secret word**. When you score low, you did a good job ! It means your proposed word is either easily '
          'interchangeable with the secret word, or that it is often associated with the secret word.')
 
 
@@ -51,5 +52,6 @@ if proposed_word:
     else:
         st.write('I dont know this word :( Please select another one')
 
+    st.write('History of proposed words. Top words are currently the closest to the secret word.')
     st.table(pd.DataFrame(store_inputs()).sort_values(by='Rank'))
 
