@@ -1,6 +1,6 @@
 ## Guess the secret word !
 
-Play the game [here](). The goal of the game is to guess a secret word. To do so,
+Play the game [here](https://share.streamlit.io/marcaureledivernois/semantic_game/app.py). The goal of the game is to guess a secret word. To do so,
 propose any word and see how close you are from the secret word. The higher the score you get, the closer
 you are to the secret word. When you score high, it means your proposed word is either easily
 interchangeable with the secret word, or that it is often associated with the secret word.
