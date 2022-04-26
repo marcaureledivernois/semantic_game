@@ -31,7 +31,10 @@ distances = np.array([[int(i), dist] for i, dist in zip(range(len(distances)), d
 distances = distances[distances[:, 1].argsort()]
 distances = np.c_[distances, [words[int(distances[i, 0])] for i in range(len(distances))]]
 
-history_proposed_words = []
+@st.cache(allow_output_mutation=True)
+def store_inputs():
+    return []
+
 
 proposed_word = st.text_input('Enter your proposed word')
 
@@ -39,7 +42,7 @@ if proposed_word:
     if proposed_word in words:
         rank = np.where(distances[:,2]==proposed_word)[0][0]
         st.write('Your proposed word is ranked',rank ,'in the closest words !')
-        history_proposed_words.append([proposed_word,rank])
+        store_inputs().append({'Proposed Word': proposed_word,'Rank' : rank})
 
 
         if rank == 0:
@@ -49,6 +52,5 @@ if proposed_word:
         st.write('I dont know this word :( Please select another one')
 
 
-history_proposed_words = pd.DataFrame(history_proposed_words,columns=(['Proposed word', 'Rank'])).sort_values(by='Rank')
-st.table(history_proposed_words)
+st.table(pd.DataFrame(store_inputs()).sort_values(by='Rank'))
 
