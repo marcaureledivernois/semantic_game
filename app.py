@@ -16,29 +16,29 @@ st.write('Play the game . The goal of the game is to guess a secret word. To do 
          'you are to the secret word. When you score high, it means your proposed word is either easily '
          'interchangeable with the secret word, or that it is often associated with the secret word.')
 
-if st.button('New Secret Word'):
-    seed = 1
-    import random
 
-    random.seed(seed)
-    target_index = random.randint(0, embeddings_matrix.shape[0])
-    target_word = words[target_index]
-    target_embedding = embeddings_matrix[target_index]
+seed = 1
+import random
 
-    distances = [distance.cosine(target_embedding, vec) for vec in embeddings_matrix]
-    distances = np.array([[int(i), dist] for i, dist in zip(range(len(distances)), distances)])
-    distances = distances[distances[:, 1].argsort()]
-    distances = np.c_[distances, [words[int(distances[i, 0])] for i in range(len(distances))]]
+random.seed(seed)
+target_index = random.randint(0, embeddings_matrix.shape[0])
+target_word = words[target_index]
+target_embedding = embeddings_matrix[target_index]
 
-    proposed_word = st.text_area('Enter your proposed word')
+distances = [distance.cosine(target_embedding, vec) for vec in embeddings_matrix]
+distances = np.array([[int(i), dist] for i, dist in zip(range(len(distances)), distances)])
+distances = distances[distances[:, 1].argsort()]
+distances = np.c_[distances, [words[int(distances[i, 0])] for i in range(len(distances))]]
 
-    if proposed_word:
-        if proposed_word in words:
-            rank = np.where(distances[:,2]==proposed_word)
-            st.write('Your proposed word is ranked',rank ,'in the closest words !')
-            if rank == 0:
-                st.write('Congratulations !! You found the secret word !')
-                st.write('It is', target_word)
-        else:
-            st.write('I dont know this word :( Please select another one')
+proposed_word = st.text_input('Enter your proposed word')
+
+if proposed_word:
+    if proposed_word in words:
+        rank = np.where(distances[:,2]==proposed_word)
+        st.write('Your proposed word is ranked',rank ,'in the closest words !')
+        if rank == 0:
+            st.write('Congratulations !! You found the secret word !')
+            st.write('It is', target_word)
+    else:
+        st.write('I dont know this word :( Please select another one')
 
