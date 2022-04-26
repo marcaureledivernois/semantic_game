@@ -30,8 +30,8 @@ if st.button('New Secret Word'):
     distances = distances[distances[:, 1].argsort()]
     distances = np.c_[distances, [words[int(distances[i, 0])] for i in range(len(distances))]]
 
-    proposed_word = st.text_input('Enter your proposed word')
-    
+    proposed_word = st.text_area('Enter your proposed word')
+
     if proposed_word:
         if proposed_word in words:
             rank = np.where(distances[:,2]==proposed_word)
