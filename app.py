@@ -52,6 +52,5 @@ if proposed_word:
     else:
         st.write('I dont know this word :( Please select another one')
 
-
-st.table(pd.DataFrame(store_inputs()).sort_values(by='Rank'))
+    st.table(pd.DataFrame(store_inputs()).sort_values(by='Rank'))
 
