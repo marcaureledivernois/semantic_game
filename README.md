@@ -7,7 +7,7 @@ interchangeable with the secret word, or that it is often associated with the se
 
 ## Examples
 
-Let's say the secret word is "raising". Words that will score high are for instance "increasing" (synonym), "money" 
+Let's say the secret word is "raising". Words that will score low are for instance "increasing" (synonym), "money" 
 (often associated with "raising") or "reducing" (antonym). Antonyms are
-also scoring high because they are close semantically ! However, words such as "magically", "fruitcake" or "cyclop" will score low
+also scoring low because they are close semantically ! However, words such as "magically", "fruitcake" or "cyclop" will score high
 because they do not really have a link with "raising".
