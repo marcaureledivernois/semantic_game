@@ -43,7 +43,7 @@ if proposed_word:
     if proposed_word in words:
         rank = np.where(distances[:,2]==proposed_word)[0][0]
         distance = distances[rank,1][0]
-        st.write(proposed_word ,'is', round(distance,3) ,'unit away from the target word ! It is the',rank ,'closest word !')
+        st.write(proposed_word ,'is', distance,'unit away from the target word ! It is the',rank ,'closest word !')
         store_inputs().append({'Proposed Word': proposed_word,'Score': distance,'Rank' : rank})
 
         if rank == 0:
