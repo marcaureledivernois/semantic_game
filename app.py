@@ -12,7 +12,7 @@ with open('embeddings_matrix.npy', 'rb') as f:
     embeddings_matrix = np.load(f, allow_pickle=True)
 
 st.title('Guess the secret word !')
-st.write('Play the game . The goal of the game is to guess a secret word. To do so, '
+st.write('The goal of the game is to guess the secret word. To do so, '
          'propose any word and see how close you are from the secret word. The lower the score you get, the closer '
          'you are to the secret word. When you score low, it means your proposed word is either easily '
          'interchangeable with the secret word, or that it is often associated with the secret word.')
