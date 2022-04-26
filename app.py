@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from scipy.spatial import distance
 import streamlit as st
 
@@ -32,13 +33,22 @@ distances = np.c_[distances, [words[int(distances[i, 0])] for i in range(len(dis
 
 proposed_word = st.text_input('Enter your proposed word')
 
+history_proposed_words = []
+
 if proposed_word:
     if proposed_word in words:
-        rank = np.where(distances[:,2]==proposed_word)
+        rank = np.where(distances[:,2]==proposed_word)[0][0]
         st.write('Your proposed word is ranked',rank ,'in the closest words !')
+        history_proposed_words.append([proposed_word,rank])
+
+
         if rank == 0:
             st.write('Congratulations !! You found the secret word !')
             st.write('It is', target_word)
     else:
         st.write('I dont know this word :( Please select another one')
+
+
+history_proposed_words = pd.DataFrame(history_proposed_words,columns=(['Proposed word', 'Rank']))
+st.table(history_proposed_words)
 
