@@ -8,7 +8,7 @@ with open('words.txt', "r", encoding='utf8') as fp:
 with open('embeddings_matrix.npy', 'rb') as f:
     embeddings_matrix = np.load(f, allow_pickle=True)
 
-seed = 1
+seed = 2
 import random
 random.seed(seed)
 target_index = random.randint(0,embeddings_matrix.shape[0])
