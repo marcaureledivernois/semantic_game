@@ -13,3 +13,12 @@ Let's say the secret word is "raising". Words that will score low are for instan
 (often associated with "raising") or "reducing" (antonym). Antonyms are
 also scoring low because they are close semantically ! However, words such as "magically", "fruitcake" or "cyclop" will score high
 because they do not really have a link with "raising".
+
+## Algorithm
+
+For those interested, the game is based on cosine distances between word embeddings. Every word is mapped
+on a vector of size (1,*embed_dim*) in such a way that two words that are close should have similar vectors.
+Every time a secret word is drawn, the cosine distances between the secret word and all the words in the vocabulary is computed
+and sorted. When the player tries to guess a word, the game outputs the cosine distance (which I call score) between the proposed word and the secret word.
+Recursively, the player will find better and better words until the cosine distance is zero, meaning that he has found the secret word.
+The game is using pretrained word embeddings from [GloVe](https://nlp.stanford.edu/projects/glove/).
